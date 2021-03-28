@@ -25,3 +25,11 @@ $ docker-compose up
 
 In the current configuration, this repository files and rails application files will be mixed together.  
 I'm trying to find a better way.
+
+<!--
+References
+https://docs.docker.com/compose/rails/
+https://sinsoku.hatenablog.com/entry/2021/03/24/100000
+https://qiita.com/fukushi_yoshikazu/items/c9beba97914d89ab4022
+https://upinetree.hatenablog.com/entry/2018/12/08/135608
+-->
