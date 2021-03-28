@@ -23,5 +23,5 @@ $ docker-compose up
 
 ## Note
 
-In the current configuration, this repository files and rails application files will be mixed together.
+In the current configuration, this repository files and rails application files will be mixed together.  
 I'm trying to find a better way.
