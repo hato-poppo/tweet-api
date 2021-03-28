@@ -11,7 +11,7 @@ Please use caution when using.
 
 ```sh
 $ mkdir {application name}; cd $_
-$ git clone {this repository}
+$ git clone https://github.com/hato-poppo/rails-docker.git
 ```
 
 ```sh
