@@ -18,16 +18,12 @@ services:
       - bundle:/app/vendor/bundle
     environment:
       BUNDLE_PATH: "/app/vendor/bundle"
-      HISTFILE: "/app/log/.bash_history"
-      EDITOR: "vi"
       RAILS_MASTER_KEY:
     depends_on:
       - db
     command: ["rails", "server", "-b", "0.0.0.0"]
     expose: ["3000"]
     ports: ["3000:3000"]
-    user: root
-    working_dir: /app
 
 volumes:
   mariadb:
