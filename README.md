@@ -7,7 +7,7 @@ This repository is build docker container for rails application.
 This repository is prototype stage and incomplete.
 Please use caution when using.
 
-## How To Use
+## How to use
 
 ```sh
 $ mkdir {application name}; cd $_
@@ -19,6 +19,12 @@ $ docker-compose build
 $ docker-compose run --rm  web rails new . -d postgresql --api --minimal
 $ docker-compose run --rm web rake db:create
 $ docker-compose up
+```
+
+## Change remote repository url
+
+```sh
+$ git remote set-url origin {new url}
 ```
 
 <!--
