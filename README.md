@@ -16,7 +16,7 @@ $ git clone https://github.com/hato-poppo/rails-docker.git
 
 ```sh
 $ docker-compose build
-$ docker-compose run --rm  web rails new . -d postgresql --api --minimal
+$ docker-compose run --rm  web rails new . -d mysql --api --minimal
 $ docker-compose run --rm web rake db:create
 $ docker-compose up
 ```
