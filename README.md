@@ -18,7 +18,7 @@ $ git clone https://github.com/hato-poppo/rails-docker.git .
 $ docker-compose build
 $ docker-compose run --rm  web rails new . -d mysql --skip-test --api --minimal
 $ docker-compose run --rm web rake db:create
-$ docker-compose up
+$ docker-compose up -d
 ```
 
 ## Change remote repository url
