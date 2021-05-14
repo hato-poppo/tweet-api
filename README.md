@@ -1,36 +1,24 @@
-# Rails Docker
+# README
 
-This repository is build docker container for rails application.
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-## Caution
+Things you may want to cover:
 
-This repository is prototype stage and incomplete.
-Please use caution when using.
+* Ruby version
 
-## How to use
+* System dependencies
 
-```sh
-$ mkdir {application name}; cd $_
-$ git clone https://github.com/hato-poppo/rails-docker.git .
-```
+* Configuration
 
-```sh
-$ docker-compose build
-$ docker-compose run --rm  web rails new . -d mysql --skip-test --api --minimal
-$ docker-compose run --rm web rake db:create
-$ docker-compose up -d
-```
+* Database creation
 
-## Change remote repository url
+* Database initialization
 
-```sh
-$ git remote set-url origin {new url}
-```
+* How to run the test suite
 
-<!--
-References
-https://docs.docker.com/compose/rails/
-https://sinsoku.hatenablog.com/entry/2021/03/24/100000
-https://qiita.com/fukushi_yoshikazu/items/c9beba97914d89ab4022
-https://upinetree.hatenablog.com/entry/2018/12/08/135608
--->
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
