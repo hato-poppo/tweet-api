@@ -4,7 +4,8 @@ class TweetsController < ApplicationController
 
   # GET /tweets
   def index
-    render response_of_success(Tweet.all)
+    tweets = Tweet.select_all_with_user
+    render response_of_success(tweets)
   end
 
   # GET /tweets/:id
