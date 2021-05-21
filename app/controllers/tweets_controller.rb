@@ -11,7 +11,7 @@ class TweetsController < ApplicationController
   # GET /tweets/:id
   def show
     tweet = Tweet.find_by_id(tweet_id)
-    render tweet.present? ? response_of_success(tweet) : response_of_not_found
+    render tweet.present? ? response_of_success(tweet) : response_of_not_found(not_found_message)
   end
 
   # POST /tweets
@@ -23,14 +23,14 @@ class TweetsController < ApplicationController
   # PUT /tweets/:id
   def update
     tweet = Tweet.find_by_id(tweet_id)
-    render response_of_not_found and return if tweet.blank?
-    render tweet.update(params_for_update) ? esponse_of_success(Tweet.find_by_id_with_user(tweet.id)) : response_of_bad_request(tweet.errors.full_messages)
+    render response_of_not_found(not_found_message) and return if tweet.blank?
+    render tweet.update(params_for_update) ? response_of_success(Tweet.find_by_id_with_user(tweet.id)) : response_of_bad_request(tweet.errors.full_messages)
   end
 
   # DELETE /tweets/:id
   def destroy
     tweet = Tweet.find_by_id(tweet_id)
-    render response_of_not_found and return if tweet.blank?
+    render response_of_not_found(not_found_message) and return if tweet.blank?
     render response_of_success(tweet.destroy)
   end
 
@@ -50,18 +50,8 @@ class TweetsController < ApplicationController
       params[:id]
     end
 
-    def response_of_success(json)
-      { json: json, status: 200 }
-    end
-
-    # application_controller.rb に書いてもらうことも検討
-    def response_of_bad_request(msg)
-      { json: { message: msg }, status: 400 }
-    end
-
-    # application_controller.rb に書いてもらうことも検討
-    def response_of_not_found
-      { json: { message: '対象のツイートが存在しません。' }, status: 404 }
+    def not_found_message
+      '対象のツイートが存在しません。'
     end
 
 end
