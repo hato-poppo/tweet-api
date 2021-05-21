@@ -17,14 +17,14 @@ class TweetsController < ApplicationController
   # POST /tweets
   def create
     tweet = Tweet.new(params_for_create)
-    render tweet.save ? response_of_success(tweet) : response_of_bad_request(tweet.errors.full_messages)
+    render tweet.save ? response_of_success(Tweet.find_by_id_with_user(tweet.id)) : response_of_bad_request(tweet.errors.full_messages)
   end
 
   # PUT /tweets/:id
   def update
     tweet = Tweet.find_by_id(tweet_id)
     render response_of_not_found and return if tweet.blank?
-    render tweet.update(params_for_update) ? response_of_success(tweet) : response_of_bad_request(tweet.errors.full_messages)
+    render tweet.update(params_for_update) ? esponse_of_success(Tweet.find_by_id_with_user(tweet.id)) : response_of_bad_request(tweet.errors.full_messages)
   end
 
   # DELETE /tweets/:id
