@@ -1,4 +1,5 @@
 class TweetsController < ApplicationController
+  before_action :find_tweet, only: [:show, :update, :destroy]
 
   # 本来であればログインユーザーのチェックやアクションに対する権限があるかどうかのチェックが必要になるが割愛する
 
@@ -10,8 +11,7 @@ class TweetsController < ApplicationController
 
   # GET /tweets/:id
   def show
-    tweet = Tweet.find_by_id(tweet_id)
-    render tweet.present? ? response_of_success(tweet) : response_of_not_found(not_found_message)
+    render @tweet.present? ? response_of_success(@tweet) : response_of_not_found(not_found_message)
   end
 
   # POST /tweets
@@ -22,16 +22,14 @@ class TweetsController < ApplicationController
 
   # PUT /tweets/:id
   def update
-    tweet = Tweet.find_by_id(tweet_id)
-    render response_of_not_found(not_found_message) and return if tweet.blank?
-    render tweet.update(params_for_update) ? response_of_success(Tweet.find_by_id_with_user(tweet.id)) : response_of_bad_request(tweet.errors.full_messages)
+    render response_of_not_found(not_found_message) and return if @tweet.blank?
+    render @tweet.update(params_for_update) ? response_of_success(@tweet) : response_of_bad_request(@tweet.errors.full_messages)
   end
 
   # DELETE /tweets/:id
   def destroy
-    tweet = Tweet.find_by_id(tweet_id)
-    render response_of_not_found(not_found_message) and return if tweet.blank?
-    render response_of_success(tweet.destroy)
+    render response_of_not_found(not_found_message) and return if @tweet.blank?
+    render response_of_success(@tweet.destroy)
   end
 
   private
@@ -46,12 +44,14 @@ class TweetsController < ApplicationController
       params.require(:tweet).permit(:content)
     end
 
-    def tweet_id
-      params[:id]
+    def find_tweet
+      @tweet = Tweet.find_by_id_with_user(params[:id])
     end
 
     def not_found_message
       '対象のツイートが存在しません。'
     end
+
+    attr_reader :tweet
 
 end
